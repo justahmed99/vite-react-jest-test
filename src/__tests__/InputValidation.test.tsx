@@ -52,3 +52,34 @@ describe('InputValidationService - sanitizeInput', () => {
   });
 
 });
+
+describe('InputValidationService - passwordValidation', () => {
+  const inputValidationService = new InputValidationService();
+  const passwordValidationMockedTest = jest.fn(inputValidationService.passwordValidation);
+
+  it('Valid password', () => {
+    expect(passwordValidationMockedTest("j4karTa1928")).toBe(true);
+    expect(passwordValidationMockedTest).toHaveBeenCalledWith("j4karTa1928");
+  });
+
+  it('Invalid password - no uppercase', () => {
+    expect(passwordValidationMockedTest("j4karta1928")).toBe(false);
+    expect(passwordValidationMockedTest).toHaveBeenCalledWith("j4karta1928");
+  });
+
+  it('Invalid password - no lowercase', () => {
+    expect(passwordValidationMockedTest("J4KARTA1928")).toBe(false);
+    expect(passwordValidationMockedTest).toHaveBeenCalledWith("J4KARTA1928");
+  });
+
+  it('Invalid password - no number', () => {
+    expect(passwordValidationMockedTest("jakartaABC")).toBe(false);
+    expect(passwordValidationMockedTest).toHaveBeenCalledWith("jakartaABC");
+  });
+
+  it('Invalid password - less than 8 characters', () => {
+    expect(passwordValidationMockedTest("j4karta")).toBe(false);
+    expect(passwordValidationMockedTest).toHaveBeenCalledWith("j4karta");
+  });
+
+});

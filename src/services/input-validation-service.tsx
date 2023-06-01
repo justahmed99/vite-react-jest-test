@@ -12,4 +12,16 @@ export class InputValidationService {
     const sanitizedInput = input.replace(/<.*?>/g, '');
     return sanitizedInput;
   }
+
+  passwordValidation(password: string): boolean {
+    if (password.length < 8) {
+      return false;
+    }
+
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+
+    return (!hasUppercase || !hasLowercase || !hasNumber) ? false : true;
+  }
 }
