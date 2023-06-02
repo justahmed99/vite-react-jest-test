@@ -1,4 +1,4 @@
-import { InputValidationService } from "../services/input-validation-service";
+import { InputValidationService } from "../../services/input-validation-service";
 
 describe('InputValidationService - emailValidation', () => {
   const inputValidationService = new InputValidationService();

@@ -1,4 +1,4 @@
-import { DateValidationService } from "../services/date-validation-service";
+import { DateValidationService } from "../../services/date-validation-service";
 
 describe("DateValidationService - validateDate", () => {
   const dateValidationService = new DateValidationService();
