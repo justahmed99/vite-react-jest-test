@@ -23,6 +23,13 @@ export default function Home() {
             Settings
           </button>
         </Link>
+
+        <Link to="/user-input">
+          <button>
+            User Input
+          </button>
+        </Link>
+
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>

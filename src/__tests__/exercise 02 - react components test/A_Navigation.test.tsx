@@ -16,12 +16,14 @@ describe('Home Page Navigation', () => {
     // Arrange
     const aboutMeButton = screen.getByText("About Me");
     const settingsButton = screen.getByText("Settings");
+    const userInputButton = screen.getByText("User Input");
 
     // Act
 
     // Assert
     expect(aboutMeButton).toBeInTheDocument();
     expect(settingsButton).toBeInTheDocument();
+    expect(userInputButton).toBeInTheDocument();
   });
 
   it("Should navigate to about me page", () => {
@@ -44,5 +46,16 @@ describe('Home Page Navigation', () => {
 
     // Assert
     expect(screen.getByText("Settings")).toBeInTheDocument();
+  });
+
+  it("Should navigate to user input page", () => {
+    // Arrange
+    const userInputButton = screen.getByText("User Input");
+
+    // Act
+    fireEvent.click(userInputButton);
+
+    // Assert
+    expect(screen.getByText("User Input")).toBeInTheDocument();
   });
 });
