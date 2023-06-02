@@ -33,53 +33,122 @@ describe('InputValidationService - inputLengthLimit', () => {
 });
 
 describe('InputValidationService - sanitizeInput', () => {
-  const inputValidationService = new InputValidationService();
-  const sanitizeInputMockedTest = jest.fn(inputValidationService.sanitizeInput);
+  let inputValidationService: InputValidationService;
+  let sanitizeInputMockedTest: jest.Mock;
 
-  it('Sanitize HTML tags', () => {
-    expect(sanitizeInputMockedTest("<p>This is a <strong>sample</strong> input.</p>")).toBe("This is a sample input.");
-    expect(sanitizeInputMockedTest).toHaveBeenCalledWith("<p>This is a <strong>sample</strong> input.</p>");
+  beforeEach(() => {
+    inputValidationService = new InputValidationService();
+    sanitizeInputMockedTest = jest.fn(inputValidationService.sanitizeInput);
   });
 
-  it('Sanitize nested HTML tags', () => {
-    expect(sanitizeInputMockedTest("<div><p>This is a <span>nested</span> input.</p></div>")).toBe("This is a nested input.");
-    expect(sanitizeInputMockedTest).toHaveBeenCalledWith("<div><p>This is a <span>nested</span> input.</p></div>");
+  it('Should sanitize HTML tags', () => {
+    // Arrange
+    const input = "<p>This is a <strong>sample</strong> input.</p>";
+    const expected = "This is a sample input.";
+
+    // Act
+    const sanitizedInput = sanitizeInputMockedTest(input);
+
+    // Assert
+    expect(sanitizedInput).toBe(expected);
+    expect(sanitizeInputMockedTest).toHaveBeenCalledWith(input);
   });
 
-  it('Input without HMTL tag', () => {
-    expect(sanitizeInputMockedTest("This is a sample input.")).toBe("This is a sample input.");
-    expect(sanitizeInputMockedTest).toHaveBeenCalledWith("This is a sample input.");
+  it('Should sanitize nested HTML tags', () => {
+    // Arrange
+    const input = "<div><p>This is a <span>nested</span> input.</p></div>";
+    const expected = "This is a nested input.";
+
+    // Act
+    const sanitizedInput = sanitizeInputMockedTest(input);
+
+    // Assert
+    expect(sanitizedInput).toBe(expected);
+    expect(sanitizeInputMockedTest).toHaveBeenCalledWith(input);
+  });
+
+  it('Shooul accept input without HMTL tag', () => {
+    // Arrange
+    const input = "This is a sample input.";
+    const expected = "This is a sample input.";
+
+    // Act
+    const sanitizedInput = sanitizeInputMockedTest(input);
+
+    // Assert
+    expect(sanitizedInput).toBe(expected);
+    expect(sanitizeInputMockedTest).toHaveBeenCalledWith(input);
   });
 
 });
 
 describe('InputValidationService - passwordValidation', () => {
-  const inputValidationService = new InputValidationService();
-  const passwordValidationMockedTest = jest.fn(inputValidationService.passwordValidation);
+  let inputValidationService: InputValidationService;
+  let passwordValidationMockedTest: jest.Mock;
 
-  it('Valid password', () => {
-    expect(passwordValidationMockedTest("j4karTa1928")).toBe(true);
-    expect(passwordValidationMockedTest).toHaveBeenCalledWith("j4karTa1928");
+  beforeEach(() => {
+    inputValidationService = new InputValidationService();
+    passwordValidationMockedTest = jest.fn(inputValidationService.passwordValidation);
   });
 
-  it('Invalid password - no uppercase', () => {
-    expect(passwordValidationMockedTest("j4karta1928")).toBe(false);
-    expect(passwordValidationMockedTest).toHaveBeenCalledWith("j4karta1928");
+  it('Should return true for a valid password', () => {
+    // Arrange 
+    const password = "j4karTa1928";
+
+    // Act
+    const isValid = passwordValidationMockedTest(password);
+
+    // Assert
+    expect(isValid).toBe(true);
+    expect(passwordValidationMockedTest).toHaveBeenCalledWith(password);
   });
 
-  it('Invalid password - no lowercase', () => {
-    expect(passwordValidationMockedTest("J4KARTA1928")).toBe(false);
-    expect(passwordValidationMockedTest).toHaveBeenCalledWith("J4KARTA1928");
+  it('Should return false for an invalid password without uppercase', () => {
+    // Arrange 
+    const password = "j4karta1928";
+
+    // Act
+    const isValid = passwordValidationMockedTest(password);
+
+    // Assert
+    expect(isValid).toBe(false);
+    expect(passwordValidationMockedTest).toHaveBeenCalledWith(password);
   });
 
-  it('Invalid password - no number', () => {
-    expect(passwordValidationMockedTest("jakartaABC")).toBe(false);
-    expect(passwordValidationMockedTest).toHaveBeenCalledWith("jakartaABC");
+  it('should return false for an invalid password without lowercase', () => {
+    // Arrange 
+    const password = "J4KARTA1928";
+
+    // Act
+    const isValid = passwordValidationMockedTest(password);
+
+    // Assert
+    expect(isValid).toBe(false);
+    expect(passwordValidationMockedTest).toHaveBeenCalledWith(password);
   });
 
-  it('Invalid password - less than 8 characters', () => {
-    expect(passwordValidationMockedTest("j4karta")).toBe(false);
-    expect(passwordValidationMockedTest).toHaveBeenCalledWith("j4karta");
+  it('Should return false for an invalid password without number', () => {
+    // Arrange 
+    const password = "jakartaABC";
+
+    // Act
+    const isValid = passwordValidationMockedTest(password);
+
+    // Assert
+    expect(isValid).toBe(false);
+    expect(passwordValidationMockedTest).toHaveBeenCalledWith(password);
+  });
+
+  it('Should return false for an invalid password less than 8 characters', () => {
+    // Arrange 
+    const password = "J4karta";
+
+    // Act
+    const isValid = passwordValidationMockedTest(password);
+
+    // Assert
+    expect(isValid).toBe(false);
+    expect(passwordValidationMockedTest).toHaveBeenCalledWith(password);
   });
 
 });

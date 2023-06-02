@@ -1,51 +1,82 @@
 import { DateValidationService } from "../../services/date-validation-service";
 
 describe("DateValidationService - validateDate", () => {
-  const dateValidationService = new DateValidationService();
+  let dateValidationService: DateValidationService;
+  let validateDateTestMocked: jest.SpyInstance;
 
-  it("Valid date input", () => {
-    const validateDateTestMocked = jest.spyOn(dateValidationService, 'validateDate');
+  beforeEach(() => {
+    dateValidationService = new DateValidationService();
+    validateDateTestMocked = jest.spyOn(
+      dateValidationService,
+      'validateDate'
+    );
+  });
 
+  afterEach(() => jest.clearAllMocks());
+
+  it("Should verify valid input", () => {
+    // Arrange
+    const dateInput = "2023-06-13";
     validateDateTestMocked.mockImplementation(() => true);
-    expect(dateValidationService.validateDate("2023-06-13")).toBe(true);
-    expect(validateDateTestMocked).toHaveBeenCalledWith("2023-06-13");
-    validateDateTestMocked.mockRestore();
+
+    // Act
+    const isValid = dateValidationService.validateDate(dateInput)
+
+    // Assert
+    expect(isValid).toBe(true);
+    expect(validateDateTestMocked).toHaveBeenCalledWith(dateInput);
   });
 
-  it("Non numeric input", () => {
-    const validateDateTestMocked = jest.spyOn(dateValidationService, 'validateDate');
-
+  it("Should verify non numeric input", () => {
+    // Arrange
+    const dateInput = "ABCD-06-29";
     validateDateTestMocked.mockImplementation(() => false);
-    expect(dateValidationService.validateDate("ABCD-06-29")).toBe(false);
-    expect(validateDateTestMocked).toHaveBeenCalledWith("ABCD-06-29");
-    validateDateTestMocked.mockRestore();
+
+    // Act
+    const isValid = dateValidationService.validateDate(dateInput)
+
+    // Assert
+    expect(isValid).toBe(false);
+    expect(validateDateTestMocked).toHaveBeenCalledWith(dateInput);
   });
 
-  it("False year input", () => {
-    const validateDateTestMocked = jest.spyOn(dateValidationService, 'validateDate');
-
+  it("Should verify false year input", () => {
+    // Arrange
+    const dateInput = "0-06-30";
     validateDateTestMocked.mockImplementation(() => false);
-    expect(dateValidationService.validateDate("0-06-30")).toBe(false);
-    expect(validateDateTestMocked).toHaveBeenCalledWith("0-06-30");
-    validateDateTestMocked.mockRestore();
+
+    // Act
+    const isValid = dateValidationService.validateDate(dateInput)
+
+    // Assert
+    expect(isValid).toBe(false);
+    expect(validateDateTestMocked).toHaveBeenCalledWith(dateInput);
   });
 
-  it("False month input", () => {
-    const validateDateTestMocked = jest.spyOn(dateValidationService, 'validateDate');
-
+  it("Should verify false month input", () => {
+    // Arrange
+    const dateInput = "2023-13-10";
     validateDateTestMocked.mockImplementation(() => false);
-    expect(dateValidationService.validateDate("2023-13-10")).toBe(false);
-    expect(validateDateTestMocked).toHaveBeenCalledWith("2023-13-10");
-    validateDateTestMocked.mockRestore();
+
+    // Act
+    const isValid = dateValidationService.validateDate(dateInput)
+
+    // Assert
+    expect(isValid).toBe(false);
+    expect(validateDateTestMocked).toHaveBeenCalledWith(dateInput);
   });
 
-  it("False date input", () => {
-    const validateDateTestMocked = jest.spyOn(dateValidationService, 'validateDate');
-
+  it("Should verify false date input", () => {
+    // Arrange
+    const dateInput = "2023-06-32";
     validateDateTestMocked.mockImplementation(() => false);
-    expect(dateValidationService.validateDate("2023-06-32")).toBe(false);
-    expect(validateDateTestMocked).toHaveBeenCalledWith("2023-06-32");
-    validateDateTestMocked.mockRestore();
+
+    // Act
+    const isValid = dateValidationService.validateDate(dateInput)
+
+    // Assert
+    expect(isValid).toBe(false);
+    expect(validateDateTestMocked).toHaveBeenCalledWith(dateInput);
   });
 
 });
