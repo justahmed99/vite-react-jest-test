@@ -29,4 +29,4 @@ The purpose of this project is to learn how to write `unit test` in React projec
 - `@testing-library/react`
 - `@testing-library/user-event`
 - `@types/jest`
-- 'axios' (for 3rd pary unit test scenarios)
+- `axios` (for 3rd pary unit test scenarios)
