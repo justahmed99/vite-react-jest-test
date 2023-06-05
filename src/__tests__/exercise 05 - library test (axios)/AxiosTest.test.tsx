@@ -29,10 +29,10 @@ describe('getUserGitHub', () => {
         },
       })
     );
-    expect(result.data.id).toEqual(mockedData.id);
-    expect(result.data.login).toEqual(mockedData.login);
-    expect(result.data.name).toEqual(mockedData.name);
-    expect(result.data.avatar_url).toEqual(mockedData.avatar_url);
+    expect(result.data?.id).toEqual(mockedData.id);
+    expect(result.data?.login).toEqual(mockedData.login);
+    expect(result.data?.name).toEqual(mockedData.name);
+    expect(result.data?.avatar_url).toEqual(mockedData.avatar_url);
   });
 
   it('should return error message when API request fails', async () => {

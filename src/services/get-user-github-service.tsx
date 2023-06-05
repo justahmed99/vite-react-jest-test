@@ -2,7 +2,7 @@ import axios from "axios";
 import { User } from "../models/User";
 import { ReturnData } from "../models/ReturnData";
 
-export default async function getUserGitHub(username: string): Promise<ReturnData> {
+export default async function getUserGitHub(username: string): Promise<ReturnData<User>> {
   try {
     const { data: Apidata } = await axios.get<User>(
       `https://api.github.com/users/${username}`,
@@ -16,14 +16,13 @@ export default async function getUserGitHub(username: string): Promise<ReturnDat
     return {
       data: Apidata
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     if (axios.isAxiosError(error)) {
       console.log(`error message: ${error.message}`);
       return {
         message: error.message
       };
     } else {
-      console.log('An unexpected error occurred');
       return {
         message: 'An unexpected error occurred'
       };

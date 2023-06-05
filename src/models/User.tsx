@@ -21,7 +21,7 @@ export interface User {
   company?: string;
   blog?: string;
   location?: string;
-  email?: any;
+  email?: unknown;
   hireable?: boolean;
   bio?: string;
   twitter_username?: string;

@@ -1,4 +1,4 @@
-export interface ReturnData {
+export interface ReturnData<T> {
   message?: string;
-  data?: any
+  data?: T
 }
