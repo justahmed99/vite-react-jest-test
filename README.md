@@ -19,3 +19,13 @@ npm run test
 
 ## How to Add Your Test?
 To add your new test, make your test file with name `<Your file name>.test.tsx` inside `src/__tests__` folder.
+
+## Important Libraries in this project :
+The purpose of this project is to learn how to write `unit test` in React project. We use several important libraries to support `unit test` :
+- `jest`
+- `jest-environment-jsdom`
+- `ts-jest` (as we use TypeScript for this project)
+- `@testing-library/jest-dom`
+- `@testing-library/react`
+- `@testing-library/user-event`
+- `@types/jest`
