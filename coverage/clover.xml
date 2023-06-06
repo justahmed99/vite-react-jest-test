@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1686035246994" clover="3.2.0">
-  <project timestamp="1686035246994" name="All files">
-    <metrics statements="48" coveredstatements="48" conditionals="12" coveredconditionals="11" methods="12" coveredmethods="12" elements="72" coveredelements="71" complexity="0" loc="48" ncloc="48" packages="4" files="6" classes="6"/>
+<coverage generated="1686047949333" clover="3.2.0">
+  <project timestamp="1686047949333" name="All files">
+    <metrics statements="57" coveredstatements="57" conditionals="15" coveredconditionals="15" methods="15" coveredmethods="15" elements="87" coveredelements="87" complexity="0" loc="57" ncloc="57" packages="4" files="7" classes="7"/>
     <package name="pages.custom-hook-example">
-      <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <file name="useInput.tsx" path="D:\Projects\react\React Materials\vite-react-jest-test\src\pages\custom-hook-example\useInput.tsx">
-        <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <metrics statements="15" coveredstatements="15" conditionals="4" coveredconditionals="4" methods="5" coveredmethods="5"/>
+      <file name="useCounter.tsx" path="D:\Projects\react\React Materials\vite-react-jest-test\src\pages\custom-hook-example\useCounter.tsx">
+        <metrics statements="8" coveredstatements="8" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="5" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="6" count="7" type="stmt"/>
-        <line num="8" count="7" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
-        <line num="12" count="7" type="stmt"/>
+        <line num="9" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="5" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="20" count="5" type="stmt"/>
+      </file>
+      <file name="useInput.tsx" path="D:\Projects\react\React Materials\vite-react-jest-test\src\pages\custom-hook-example\useInput.tsx">
+        <metrics statements="7" coveredstatements="7" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="9" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
       </file>
     </package>
     <package name="pages.home">
