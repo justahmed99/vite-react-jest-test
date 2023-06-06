@@ -17,15 +17,9 @@ export default async function getUserGitHub(username: string): Promise<ReturnDat
       data: Apidata
     };
   } catch (error: unknown) {
-    if (axios.isAxiosError(error)) {
-      console.log(`error message: ${error.message}`);
-      return {
-        message: error.message
-      };
-    } else {
-      return {
-        message: 'An unexpected error occurred'
-      };
-    }
+    return {
+      message: 'An unexpected error occurred'
+    };
+
   }
 }
