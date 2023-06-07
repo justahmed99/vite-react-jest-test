@@ -7,7 +7,7 @@ jest.mock('axios');
 
 describe('getUserGitHub', () => {
   it('should return user data when API request is successful', async () => {
-    // Assert
+    // Arrange
     const username = 'justahmed99'
     const mockedData: User = {
       id: 10685652,
