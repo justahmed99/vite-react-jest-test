@@ -1,8 +1,13 @@
 import { InputValidationService } from "../../services/input-validation-service";
 
 describe('InputValidationService - emailValidation', () => {
-  const inputValidationService = new InputValidationService();
-  const emailTestMocked = jest.fn(inputValidationService.emailValidation);
+  let inputValidationService: InputValidationService;
+  let emailTestMocked: jest.Mock;
+
+  beforeEach(() => {
+    inputValidationService = new InputValidationService();
+    emailTestMocked = jest.fn(inputValidationService.emailValidation);
+  });
 
   it('Email input should be correct', () => {
     expect(emailTestMocked("ahmad@slash.co")).toBe(true);
